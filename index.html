@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Webdev Showcase</title>
+
     <style>
           @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
@@ -37,7 +38,8 @@
         }
 
         .container > h1 {
-            margin-bottom: 20px;
+            margin-bottom: 50px;
+            margin-top: 100px;
         }
 
         .container > hr {
@@ -76,9 +78,13 @@
             color: rgb(221, 221, 221);
         }
     </style>
+
 </head>
 <body>
+
+
     <div class="container">
+        
         <header>
             <h1>Webdev Showcase <a href="https://github.com/stefan-nicolae">github.com/stefan-nicolae</a></h1>
             <h2>Weather App needs access to your location to work</h2>
@@ -93,9 +99,10 @@
             <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
             <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
         </ul>
+        <!-- <section class="draggable-files">
+            <img src="./kitty-kitten.gif">
+        </section> -->
         <section class="chats"></section>
-
-        <hr>
 
         <h1>OLX Clone</h1>
         <ul>
@@ -112,11 +119,9 @@
             height= "800"
         ></iframe>
 
-        <hr>
-
         <h1>Weather App</h1>
         <ul>
-            <li>Simple Weather App made in React.js</li>
+            <li>Simple weather app made in React.js</li>
             <li><b>Needs access to your location to work</b></li>
             <li>Uses <a href="https://www.weatherapi.com/">weatherapi.com</a> for the weather info</li>
             <li>Uses Google Maps API for conversion of address to latitude and longitude and vice versa</li>
@@ -148,7 +153,7 @@
 
         const CHATID = generateString(15)
 
-        function prepareFrame(id) {
+        function prepareChatFrame(id) {
             const ifrm = document.createElement("iframe")
             
             ifrm.setAttribute("height", "800")
@@ -162,8 +167,12 @@
 
             const chats = document.querySelector(".chats")
     
-            chats.appendChild(prepareFrame("chat-1"))
-            chats.appendChild(prepareFrame("chat-2"))
+            chats.appendChild(prepareChatFrame("chat-1"))
+            chats.appendChild(prepareChatFrame("chat-2"))
+    </script>
+
+    <script>
+
     </script>
 </body>
 </html>
