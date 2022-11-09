@@ -9,7 +9,7 @@
 
     <title>Webdev Showcase</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
         * {
             margin: 0;
@@ -28,7 +28,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: 'Xanh Mono', monospace;
+            font-family: 'Amiri', serif;
         }
         
         .container > header {
@@ -62,10 +62,15 @@
             margin-right: 10px;
         }
 
+        .container ul {
+            align-self: flex-start;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
     </style>
 </head>
 <body>
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>  -->
     <div class="container">
         <header>
             <h1>Webdev Showcase <a href="https://github.com/stefan-nicolae">github.com/stefan-nicolae</a></h1>
@@ -73,26 +78,42 @@
         </header>
 
         <h1>Chat App</h1>
-        <section class="chats">
+        <ul>
+            <li>Simple chat app made in React.js</li>
+            <li>Drag and drop to send files</li>
+            <li><a href="https://cv-chat-app.netlify.app">Go to client website</a></li>
+            <li><a href="https://cv-chat-app.netlify.app/defaults">Go to client website with dummy data</a></li>
+            <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
+            <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
+        </ul>
+        <section class="chats"></section>
 
-        </section>
         <hr>
+
         <h1>OLX Clone</h1>
+        <ul>
+            <li>OLX clone made in React.js</li>
+            <li>Uses <a href="https://dummyjson.com">dummyjson.com</a> for the data and Google Maps API for the map on the offer page and search by location</li>
+            <li>Contains home page, search page (click on "Cauta acum") and offer page (click on a product)</li>
+            <li><a href="https://cv-olx-clone.netlify.app">Go to home page</a></li>
+            <li><a href="https://github.com/stefan-nicolae/cv-olx-clone">Go to repository</a></li>
+        </ul>
         <iframe 
             id="olx-home"
             src="https://cv-olx-clone.netlify.app"
             width = "100%"
             height= "800"
         ></iframe>
-        <!-- <iframe 
-            id="olx-search"
-            src="https://cv-olx-clone.netlify.app/search"
-            width = "100%"
-            height= "800"
-        ></iframe> -->
+
         <hr>
 
         <h1>Weather App</h1>
+        <ul>
+            <li>Simple Weather App made in React.js</li>
+            <li>Uses <a href="https://www.weatherapi.com/">weatherapi.com</a> for the weather info</li>
+            <li>Uses Google Maps API for conversion of address to latitude and longitude and vice versa</li>
+            <li><a href="https://github.com/stefan-nicolae/CV-weather-app">Go to repository</a></li>
+        </ul>
         <iframe 
             id="weather"
             allow="geolocation"
