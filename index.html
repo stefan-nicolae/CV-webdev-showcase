@@ -10,17 +10,23 @@
     <title>Webdev Showcase</title>
 
     <style>
-          @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+
+        :root {
+            --gray: rgb(174, 174, 174);
+            --dark-gray: rgb(25, 25, 25);
+            --highlight: rgb(98, 98, 98);
+        }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
         .container {
-            background-color:  rgb(174, 174, 174);
-            color: rgb(25, 25, 25);
+            
+            background-color:  var(--gray);
+            color: var(--dark-gray);
             height: fit-content;
             width: 100%;
             padding: 20px;
@@ -71,11 +77,20 @@
         }
 
         .container a {
-            color: rgb(25, 25, 25);
+            color: var(--dark-gray);
         }
 
         .container a:hover {
-            color: rgb(98, 98, 98);
+            color: var(--highlight);
+        }
+
+        .container #chat-reload{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .container #chat-reload:hover {
+            color: var(--highlight);
         }
     </style>
 
@@ -95,9 +110,9 @@
             <li>Simple chat app made in React.js</li>
             <li>To go straight in a chat room as shown below, both chatters need to include "chatID=[random_string_here]" in the URL, braces included</li>
             <li><a href="https://cv-chat-app.netlify.app">Go to client website</a></li>
-            <!-- <li><a href="https://cv-chat-app.netlify.app/defaults">Go to client website with dummy data</a></li> -->
             <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
             <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
+            <li><b>The free hosting service might automatically stop the connection. <span id="chat-reload">Click to reload</span></b></li>
         </ul>
         <!-- <section class="draggable-files">
             <img src="./kitty-kitten.gif">
@@ -140,7 +155,7 @@
     </div>
     <script>
         const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
+        
         function generateString(length) {
             let result = ' ';
             const charactersLength = characters.length;
@@ -153,7 +168,7 @@
 
         const CHATID = generateString(15)
 
-        function prepareChatFrame(id) {
+        function prepareChatFrame(id, CHATID) {
             const ifrm = document.createElement("iframe")
             
             ifrm.setAttribute("height", "800")
@@ -165,10 +180,17 @@
             return ifrm
         }
 
-            const chats = document.querySelector(".chats")
-    
-            chats.appendChild(prepareChatFrame("chat-1"))
-            chats.appendChild(prepareChatFrame("chat-2"))
+        const chats = document.querySelector(".chats")
+        chats.appendChild(prepareChatFrame("chat-1", CHATID))
+        chats.appendChild(prepareChatFrame("chat-2", CHATID))
+
+        document.querySelector("#chat-reload").onclick = () => {
+            console.log("Reloading")
+            const CHATID = generateString(15)
+            while (chats.lastChild) chats.removeChild(chats.lastChild);
+            chats.appendChild(prepareChatFrame("chat-1", CHATID))
+            chats.appendChild(prepareChatFrame("chat-2", CHATID))
+        }
     </script>
 
     <script>
