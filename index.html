@@ -48,6 +48,12 @@
             margin-top: 100px;
         }
 
+        .container > h3 {
+            align-self: flex-start;
+            margin-bottom: 10px;
+            margin-left: 50px;
+        }
+
         .container > hr {
             margin: auto;
             margin-bottom: 40px;
@@ -92,6 +98,34 @@
         .container #chat-reload:hover {
             color: var(--highlight);
         }
+
+        .container .draggable-files {
+            border: 1px solid var(--dark-gray);
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .container .draggable-files > * {
+            height: 100px;
+            padding-right: 10px;
+        }
+
+        .container .draggable-files > .audio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: unset;
+            padding-right: unset;
+        }
+
+        .container .draggable-files audio {
+            width: 200px;
+        }
     </style>
 
 </head>
@@ -114,9 +148,22 @@
             <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
             <li><b>The free hosting service might automatically stop the connection. <span id="chat-reload">Click to reload</span></b></li>
         </ul>
-        <!-- <section class="draggable-files">
-            <img src="./kitty-kitten.gif">
-        </section> -->
+        <h3>File Transfer</h3>
+        <ul>
+            <li>Try dragging a file from below into the chat app, or multiple, one after another</li>
+            <li>After it's sent, click on an image to zoom</li>
+        </ul>
+        <section class="draggable-files">
+            <img draggable="true" src="./kitty1.gif">
+            <img draggable="true" src="./kitty2.gif">
+            <img draggable="true" src="mall.jpg">
+            <div class="audio">
+                Unknown Artist - Maboroshi
+                <audio controls draggable="true">
+                    <source src="Unknown Artist - Maboroshi.mp3" type="audio/mp3">
+                </audio>
+            </div>
+        </section>
         <section class="chats"></section>
 
         <h1>OLX Clone</h1>
@@ -167,14 +214,15 @@
         }
 
         const CHATID = generateString(15)
-
+        const PRODUCTION = true
+        const CHATDOMAIN = PRODUCTION ? "https://cv-chat-app.netlify.app" : "http://localhost:3000/"
         function prepareChatFrame(id, CHATID) {
             const ifrm = document.createElement("iframe")
             
             ifrm.setAttribute("height", "800")
             ifrm.setAttribute("width", "100%")
             ifrm.setAttribute("src",
-                `https://cv-chat-app.netlify.app/nologin+chatID=[${CHATID.replaceAll(" ", "")}]`
+                `${CHATDOMAIN}/nologin+chatID=[${CHATID.replaceAll(" ", "")}]`
             )
             ifrm.setAttribute("id", id)
             return ifrm
@@ -193,8 +241,26 @@
         }
     </script>
 
-    <script>
 
+    <script>
+            const toDataURL = url => fetch(url)
+                .then(response => response.blob())
+                .then(blob => new Promise((resolve, reject) => {
+                const reader = new FileReader()
+                reader.onloadend = () => resolve(reader.result)
+                reader.onerror = reject
+                reader.readAsDataURL(blob)
+            }))
+
+            document.querySelectorAll(".draggable-files > *").forEach(fileElement => {
+                let counter = 0
+                toDataURL(fileElement.currentSrc).then(dataURI => {
+                    fileElement.ondragstart = e => {
+                        e.dataTransfer.setData("text/plain", dataURI)
+                        e.dataTransfer.setData("title", fileElement.src)
+                    }
+                })
+            })
     </script>
 </body>
 </html>
