@@ -23,8 +23,8 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         .container {
-            
             background-color:  var(--gray);
             color: var(--dark-gray);
             height: fit-content;
@@ -61,6 +61,7 @@
             border-radius: 8px;
         }
         
+        /* chats */
         .container > .chats {
             width: 100%;
             display: flex;
@@ -69,7 +70,16 @@
         .container #chat-1 {
             margin-right: 10px;
         }
+        
+        .container #chat-reload{
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
+        .container #chat-reload:hover {
+            color: var(--highlight);
+        }
+        /* chats end */
         .container ul {
             align-self: flex-start;
             margin-left: 20px;
@@ -84,15 +94,8 @@
             color: var(--highlight);
         }
 
-        .container #chat-reload{
-            text-decoration: underline;
-            cursor: pointer;
-        }
 
-        .container #chat-reload:hover {
-            color: var(--highlight);
-        }
-
+        /* draggable files */
         .container .draggable-files {
             border: 1px solid var(--dark-gray);
             align-self: flex-start;
@@ -101,27 +104,29 @@
             padding: 10px;
             margin-bottom: 20px;
             border-radius: 8px;
+            padding-right: unset;
         }
 
         .container .draggable-files > * {
-            height: 100px;
-            padding-right: 10px;
+            margin-right: 10px;
         }
 
-        .container .draggable-files > .audio {
+        .container .draggable-files * {
+            height: 100px;
+        }
+
+        .container .draggable-files .media.audio {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: unset;
-            padding-right: unset;
         }
 
-        .container .draggable-files audio {
+        .container .draggable-files .media.audio > audio{
             width: 200px;
-        }
+            height: unset;
+        } 
     </style>
-
 </head>
 <body>
 
@@ -151,13 +156,17 @@
             <img draggable="true" src="media/kitty1.gif">
             <img draggable="true" src="media/kitty2.gif">
             <img draggable="true" src="media/mall.jpg">
-            <video controls draggable="true">
-                <source src="media/pixar intro.mp4" type="video/mp4">
-            </video>
-            <div class="audio">
+
+            <div class="media video">
+                <video controls draggable="true">
+                    <source src="media/pixar intro.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="media audio">
                 Unknown Artist - Maboroshi
                 <audio controls draggable="true">
-                    <source src="media/Unknown Artist - Maboroshi.mp3" type="audio/mp3">
+                    <source src="media/Unknown Artist - Maboroshi.mp3" type="audio/mpeg">
                 </audio>
             </div>
 
@@ -253,10 +262,13 @@
 
             document.querySelectorAll(".draggable-files > *").forEach(fileElement => {
                 let counter = 0
-                toDataURL(fileElement.currentSrc).then(dataURI => {
+                let source = fileElement.src
+                if(fileElement.className.includes("media")) source = fileElement.children[0].children[0].src
+
+                toDataURL(source).then(dataURI => {
                     fileElement.ondragstart = e => {
                         e.dataTransfer.setData("text/plain", dataURI)
-                        e.dataTransfer.setData("title", fileElement.src)
+                        e.dataTransfer.setData("title", decodeURIComponent(source))
                     }
                 })
             })
