@@ -41,8 +41,13 @@
         .container li, 
         .container > h3, 
         .container > h1,
-        .container > .draggable-files {
+        .container > .draggable-files,
+        .container > p  {
             margin-left: 20vw;
+        }
+
+        .container > h3.alert {
+            color: rgb(157, 0, 0);
         }
 
         .container > h1 {
@@ -161,7 +166,6 @@
             <li><a href="https://cv-chat-app.netlify.app/default_friends">Multiple users demonstration</li>
             <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
             <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
-            <li><b>The free hosting service might automatically stop the connection. <span id="chat-reload">Click to reload</span></b></li>
         </ul>
         <h3>File Transfer</h3>
         <ul>
@@ -172,23 +176,26 @@
             <img draggable="true" src="media/kitty1.gif">
             <img draggable="true" src="media/kitty2.gif">
             <img draggable="true" src="media/mall.jpg">
-
+            
             <div class="media video">
                 <video controls draggable="true">
                     <source src="media/pixar intro.mp4" type="video/mp4">
                 </video>
             </div>
-
+            
             <div class="media audio">
                 Unknown Artist - Maboroshi
                 <audio controls draggable="true">
                     <source src="media/Unknown Artist - Maboroshi.mp3" type="audio/mpeg">
                 </audio>
             </div>
-
+            
         </section>
+        <h3 class="alert"><b>
+            The free hosting service might automatically stop the connection. <span id="chat-reload">Click to reload</span>
+        </b></h3>
         <section class="chats"></section>
-
+        
         <h1>OLX Clone</h1>
         <ul>
             <li>OLX clone made in React.js</li>
