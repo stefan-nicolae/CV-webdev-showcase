@@ -15,7 +15,7 @@
         :root {
             --gray: rgb(189, 189, 189);
             --dark-gray: rgb(25, 25, 25);
-            --highlight: rgb(98, 98, 98);
+            --highlight: rgb(244, 244, 244);
         }
 
         * {
@@ -32,27 +32,23 @@
             padding: 20px;
             padding-right: 100px;
             padding-bottom: 100px;
+            padding-top: 100px;
             display: flex;
             flex-direction: column;
             font-family: 'Amiri', serif;
         }
-        
-        .container > header, 
-        .container li, 
-        .container > h3, 
-        .container > h1,
-        .container > .draggable-files,
-        .container > p  {
-            margin-left: 20vw;
-        }
 
-        .container > h3.alert {
-            color: rgb(157, 0, 0);
-        }
-
-        .container > h1 {
-            margin-bottom: 50px;
+        .container .info {
+            margin-left: 10vw;
+            max-width: 60vw;
+            background-color: rgb(212, 112, 112);
+            border-radius: 8px;
+            padding: 30px;
             margin-top: 100px;
+        }
+        
+        .container .info h1 {
+            margin-bottom: 50px;
         }
 
         .container > h3 {
@@ -60,7 +56,27 @@
             margin-bottom: 10px;
         }
 
+        .container > header {
+            background-color: var(--dark-gray);
+            color: var(--gray);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            font-size: 0.8em;
+            padding-left: 50px;
+            border-radius: 0px 0px 8px 8px;
+        }
+        
+        .container header a {
+            color: var(--gray);
+        }
 
+        .container header h2 {
+            margin-left: 10px;
+        }
+        
         .container iframe {
             margin-bottom: 5px;
             border: none;
@@ -69,25 +85,6 @@
             height: 80vh;
         }
 
-        /* chats */
-        .container > .chats {
-            width: 100%;
-            display: flex;
-        }
-
-        .container #chat-1 {
-            margin-right: 10px;
-        }
-        
-        .container #chat-reload{
-            text-decoration: underline;
-            cursor: pointer;
-        }
-
-        .container #chat-reload:hover {
-            color: var(--highlight);
-        }
-        /* chats end */
         .container ul {
             align-self: flex-start;
             margin-left: 20px;
@@ -97,26 +94,50 @@
         .container a {
             color: var(--dark-gray);
         }
-
+        
         .container a:hover {
             color: var(--highlight);
         }
 
 
+        /* chats */
+        .container > .chats {
+            width: 100%;
+            display: flex;
+        }
+        
+        .container #chat-1 {
+            margin-right: 10px;
+        }
+        
+        .container #chat-reload{
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        
+        .container #chat-reload:hover {
+            color: var(--highlight);
+        }
+        /* chats end */
+
         /* draggable files */
         .container .draggable-files {
             border: 1px solid var(--dark-gray);
+            width: fit-content;
             align-self: flex-start;
             display: flex;
             align-items: center;
             padding: 10px;
+            padding-top: 0;
             margin-bottom: 20px;
             border-radius: 8px;
             padding-right: unset;
+            flex-wrap: wrap;
         }
 
         .container .draggable-files > * {
             margin-right: 10px;
+            margin-top: 10px;
         }
 
         .container .draggable-files * {
@@ -134,6 +155,7 @@
             width: 200px;
             height: unset;
         } 
+
         /* draggable files end */
 
         /* olx */
@@ -155,72 +177,76 @@
         
         <header>
             <h1>Webdev Showcase <a href="https://github.com/stefan-nicolae">github.com/stefan-nicolae</a></h1>
-            <h2>Weather App needs access to your location to work</h2>
         </header>
 
-        <h1>Chat App</h1>
-        <ul>
-            <li>Simple chat app made in React.js</li>
-            <li>To go straight in a chat room as shown below, both chatters need to include "chatID=[random_string_here]" in the URL, braces included</li>
-            <li><a href="https://cv-chat-app.netlify.app">Go to client website</a></li>
-            <li><a href="https://cv-chat-app.netlify.app/default_friends">Multiple users demonstration</li>
-            <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
-            <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
-        </ul>
-        <h3>File Transfer</h3>
-        <ul>
-            <li>Try dragging a file from below (or something from your computer) into the chat app, or multiple files, one after another</li>
-            <li>After an image is sent, you can click on it to zoom</li>
-        </ul>
-        <section class="draggable-files">
-            <img draggable="true" src="media/kitty1.gif">
-            <img draggable="true" src="media/kitty2.gif">
-            <img draggable="true" src="media/mall.jpg">
-            
-            <div class="media video">
-                <video controls draggable="true">
-                    <source src="media/pixar intro.mp4" type="video/mp4">
-                </video>
-            </div>
-            
-            <div class="media audio">
-                Unknown Artist - Maboroshi
-                <audio controls draggable="true">
-                    <source src="media/Unknown Artist - Maboroshi.mp3" type="audio/mpeg">
-                </audio>
-            </div>
-            
+        <section class="info">
+            <h1>Chat App</h1>
+            <ul>
+                <li>Simple chat app made in React.js</li>
+                <li>To go straight in a chat room as shown below, both chatters need to include "chatID=[random_string_here]" in the URL, braces included</li>
+                <li><a href="https://cv-chat-app.netlify.app">Go to client website</a></li>
+                <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
+                <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
+            </ul>
+            <h3 style="margin-bottom: 20px">File Transfer</h3>
+            <ul>
+                <li>Try dragging a file from below (or something from your computer) into the chat app, or multiple files, one after another</li>
+                <li>After an image is sent, you can click on it to zoom</li>
+            </ul>
+            <section class="draggable-files">
+                <img draggable="true" src="media/kitty1.gif">
+                <img draggable="true" src="media/kitty2.gif">
+                <img draggable="true" src="media/mall.jpg">
+                
+                <div class="media video">
+                    <video controls draggable="true">
+                        <source src="media/pixar intro.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div class="media audio">
+                    Unknown Artist - Maboroshi
+                    <audio controls draggable="true">
+                        <source src="media/Unknown Artist - Maboroshi.mp3" type="audio/mpeg">
+                    </audio>
+                </div>
+                
+            </section>
+            <h3 style="margin-top: 30px" class="alert"><b>
+                The hosting service is free and might automatically close the connection
+                <br>
+                <span id="chat-reload">Click to reload</span>
+            </b></h3>
         </section>
-        <h3 class="alert"><b>
-            The free hosting service might automatically stop the connection. <span id="chat-reload">Click to reload</span>
-        </b></h3>
         <section class="chats"></section>
-        
-        <h1>OLX Clone</h1>
-        <ul>
-            <li>OLX clone made in React.js</li>
-            <li>Uses <a href="https://dummyjson.com">dummyjson.com</a> for the data and Google Maps API for the map on the offer page and search by location</li>
-            <li>Contains home page, search page (click on "Cauta acum") and offer page (click on a product)</li>
-            <li><a href="https://cv-olx-clone.netlify.app">Go to home page</a></li>
-            <li><a href="https://github.com/stefan-nicolae/cv-olx-clone">Go to repository</a></li>
-        </ul>
+        <section class="info">
+            <h1>OLX Clone</h1>
+            <ul>
+                <li>OLX clone made in React.js</li>
+                <li>Uses <a href="https://dummyjson.com">dummyjson.com</a> for the data and Google Maps API for the map on the offer page and search by location</li>
+                <li>Contains home page, search page (click on "Cauta acum") and offer page (click on a product)</li>
+                <li><a href="https://cv-olx-clone.netlify.app">Go to home page</a></li>
+                <li><a href="https://github.com/stefan-nicolae/cv-olx-clone">Go to repository</a></li>
+            </ul>
+        </section>
         <iframe 
             id="olx-clone"
             src="https://cv-olx-clone.netlify.app"
             width = "100%"
             height= "100%"
         ></iframe>
-
-        <h1>Weather App</h1>
-        <ul>
-            <li>Simple weather app made in React.js</li>
-            <li><b>Needs access to your location to work</b></li>
-            <li>Uses <a href="https://www.weatherapi.com/">weatherapi.com</a> for the weather info</li>
-            <li>Uses Google Maps API for conversion of address to latitude and longitude and vice versa</li>
-            <li>Try typing something like "Timisoara, Romania"</li>
-            <li><a href="https://cv-weather-app.netlify.app">Go to page</a></li>
-            <li><a href="https://github.com/stefan-nicolae/CV-weather-app">Go to repository</a></li>
-        </ul>
+        <section class="info">
+            <h1>Weather App</h1>
+            <ul>
+                <li>Simple weather app made in React.js</li>
+                <li><b>Needs access to your location to work</b></li>
+                <li>Uses <a href="https://www.weatherapi.com/">weatherapi.com</a> for the weather info. The free version goes up to just three days</li>
+                <li>Uses Google Maps API for conversion of address to latitude and longitude and vice versa</li>
+                <li>Try typing something like "Timisoara, Romania"</li>
+                <li><a href="https://cv-weather-app.netlify.app">Go to page</a></li>
+                <li><a href="https://github.com/stefan-nicolae/CV-weather-app">Go to repository</a></li>
+            </ul>
+        </section>
         <iframe 
             id="weather"
             allow="geolocation"
