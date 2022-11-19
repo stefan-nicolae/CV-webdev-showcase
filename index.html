@@ -193,8 +193,12 @@
                 <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
             </ul>
             <h3 style="margin-bottom: 20px">File Transfer</h3>
-            <ul>
-                <li>Try dragging a file from below (or something from your computer) into the chat app, or multiple files, one after another</li>
+            <ul class="firefox-transfer">
+                <li>Try dragging a file from below (or any file, max 8MB) into the chat app, or multiple files, one after another</li>
+                <li>After an image is sent, you can click on it to zoom</li>
+            </ul>
+            <ul class="chrome-transfer">
+                <li>Try dragging any file (max 8MB) into the chat app, or multiple files, one after another</li>
                 <li>After an image is sent, you can click on it to zoom</li>
             </ul>
             <section class="draggable-files">
@@ -214,8 +218,8 @@
                         <source src="media/Unknown Artist - Maboroshi.mp3" type="audio/mpeg">
                     </audio>
                 </div>
-                
             </section>
+
             <h3 style="margin-top: 30px" class="alert"><b>
                 If the chat hasn't loaded yet, please wait for a bit
                 <br>
@@ -327,6 +331,15 @@
                     }
                 })
             })
+
+            const isFirefox = typeof InstallTrigger !== 'undefined';
+            if(!isFirefox) {
+                document.querySelector(".draggable-files").style.display = "none"
+                document.querySelector("ul.firefox-transfer").style.display = "none"
+            }
+            else {
+                document.querySelector("ul.chrome-transfer").style.display = "none"
+            }
     </script>
 </body>
 </html>
