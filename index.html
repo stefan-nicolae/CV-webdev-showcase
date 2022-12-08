@@ -1,21 +1,15 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Webdev Showcase</title>
-
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
 
         :root {
             --gray: rgb(189, 189, 189);
-            --dark-gray: rgb(25, 25, 25);
-            --highlight: rgb(244, 244, 244);
         }
 
         * {
@@ -24,324 +18,99 @@
             box-sizing: border-box;
         }
 
+        body {
+            background-color: rgb(27, 27, 27);
+        }
+
         .container {
-            background-color: var(--gray);
-            color: var(--dark-gray);
-            height: fit-content;
+            background-color: rgb(27, 27, 27);
             width: 100%;
-            padding: 20px;
-            padding-right: 100px;
-            padding-bottom: 100px;
-            padding-top: 100px;
-            display: flex;
-            flex-direction: column;
+            height: 100vh;
             font-family: 'Amiri', serif;
         }
-
-        .container .info {
-            margin-left: 10vw;
-            max-width: 60vw;
-            background-color: rgb(193, 84, 84);
-            border-radius: 8px;
-            padding: 30px;
-            margin-top: 100px;
-        }
         
-        .container .info h1 {
-            margin-bottom: 50px;
-        }
-
-        .container > h3 {
-            align-self: flex-start;
-            margin-bottom: 10px;
-        }
-
-        .container h3.alert {
-            /* color: rgb(2, 27, 153); */
-        }
-        
-        .container > header {
-            background-color: var(--dark-gray);
-            color: var(--gray);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            font-size: 0.8em;
-            padding-left: 50px;
-            border-radius: 0px 0px 8px 8px;
-            z-index: 3;
-        }
-        
-        .container header a {
-            color: var(--gray);
-        }
-
-        .container header h2 {
-            margin-left: 10px;
-        }
-        
-        .container iframe {
-            margin-bottom: 5px;
-            border: none;
-            border-radius: 8px;
-            margin-top: 50px;
-            height: 80vh;
-        }
-
-        .container ul {
-            align-self: flex-start;
-            margin-left: 20px;
-            margin-bottom: 20px;
-        }
-
-        .container a {
-            color: var(--dark-gray);
-        }
-        
-        .container a:hover {
-            color: var(--highlight);
-        }
-
-
-        /* chats */
-        .container > .chats {
-            width: 100%;
+        .projects {
             display: flex;
-        }
-        
-        .container #chat-1 {
-            margin-right: 10px;
-        }
-        
-        .container #chat-reload{
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        
-        .container #chat-reload:hover {
-            color: var(--highlight);
-        }
-        /* chats end */
-
-        /* draggable files */
-        .container .draggable-files {
-            border: 1px solid var(--dark-gray);
-            width: fit-content;
-            align-self: flex-start;
-            display: flex;
-            align-items: center;
+            width: 100%;
             padding: 10px;
-            padding-top: 0;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            padding-right: unset;
-            flex-wrap: wrap;
         }
 
-        .container .draggable-files > * {
-            margin-right: 10px;
-            margin-top: 10px;
+        .project {
+            flex: 1;
+            margin: 10px;
         }
 
-        .container .draggable-files * {
-            height: 100px;
+        .project img {
+            width: 100%;
         }
 
-        .container .draggable-files .media.audio {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .project h1 {
+            color: white;
+            font-size: larger;
+            margin: 10px 0;
         }
 
-        .container .draggable-files .media.audio > audio{
-            width: 300px;
-        } 
-
-        /* draggable files end */
-
-        /* olx */
-             @media (max-width: 1400px) {            
-            .container #olx-clone {
-                transform: scale(0.7) translateX(-21.5%);
-                width: 143%;
-                height: 120vh;
-            }
+        .project li {
+            color: var(--gray);
         }
-        /* olx end */
+
+        .project li a {
+            color: var(--gray);
+        }
+
         
+        .project li:first-of-type a {
+            color: rgb(92, 130, 255);
+        }
+        
+        .project li a:hover {
+            color:rgb(222, 222, 222)
+        }
+
+        .project ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
-
-
     <div class="container">
-        
-        <header>
-            <h1>Webdev Showcase <a href="https://github.com/stefan-nicolae">github.com/stefan-nicolae</a></h1>
-            <!-- <h2>Weather App needs access to your location to work</h2> -->
-        </header>
-        <h2 style="color: red; margin-left: 5%; margin-top: 20px;">Weather App needs access to your location to work</h2>
-
-        <section class="info">
-            <h1>Chat App - ReactJS</h1>
-            <ul>
-                <li>Simple chat app made in ReactJS</li>
-                <li>To go straight in a chat room as shown below, both chatters need to include "chatID=[random_string_here]" in the URL, braces included</li>
-                <li><a href="https://cv-chat-app.netlify.app">Go to client website</a></li>
-                <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
-                <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
-            </ul>
-            <h3 style="margin-bottom: 20px">File Transfer</h3>
-            <ul class="firefox-transfer">
-                <li>Try dragging a file from below (or any file, max 8MB) into the chat app, or multiple files, one after another</li>
-                <li>After an image is sent, you can click on it to zoom</li>
-            </ul>
-            <ul class="chrome-transfer">
-                <li>Try dragging any file (max 8MB) into the chat app, or multiple files, one after another</li>
-                <li>After an image is sent, you can click on it to zoom</li>
-            </ul>
-            <section class="draggable-files">
-                <img draggable="true" src="media/kitty1.gif">
-                <img draggable="true" src="media/kitty2.gif">
-                <img draggable="true" src="media/mall.jpg">
-                
-                <div class="media video">
-                    <video controls draggable="true">
-                        <source src="media/pixar intro.mp4" type="video/mp4">
-                    </video>
-                </div>
-                
-                <div class="media audio">
-                    Unknown Artist - Maboroshi
-                    <audio controls draggable="true">
-                        <source src="media/Unknown Artist - Maboroshi.mp3" type="audio/mpeg">
-                    </audio>
-                </div>
-            </section>
-
-            <h3 style="margin-top: 30px" class="alert"><b>
-                If the chat hasn't loaded yet, please wait for a bit
-                <br>
-                The hosting service is free and might automatically close the connection
-                <br>
-                <span id="chat-reload">Click to reload</span>
-            </b></h3>
-        </section>
-        <section class="chats"></section>
-        <section class="info">
-            <h1>OLX Clone - ReactJS</h1>
-            <ul>
-                <li>OLX clone made in ReactJS</li>
-                <li>Uses <a href="https://dummyjson.com">dummyjson.com</a> for the data and Google Maps API for the map on the offer page and search by location</li>
-                <li>Contains home page, search page (click on "Cauta acum") and offer page (click on a product)</li>
-                <li><a href="https://cv-olx-clone.netlify.app">Go to home page</a></li>
-                <li><a href="https://github.com/stefan-nicolae/cv-olx-clone">Go to repository</a></li>
-            </ul>
-        </section>
-        <iframe 
-            id="olx-clone"
-            src="https://cv-olx-clone.netlify.app"
-            width = "100%"
-            height= "100%"
-        ></iframe>
-        <section class="info">
-            <h1>Weather App - ReactJS</h1>
-            <ul>
-                <li>Simple weather app made in ReactJS</li>
-                <li><b>Needs access to your location to work</b></li>
-                <li>Uses <a href="https://www.weatherapi.com/">weatherapi.com</a> for the weather info. <b>The free version goes up to just three days</b></li>
-                <li>Uses Google Maps API for conversion of address to latitude and longitude and vice versa</li>
-                <li>Try typing something like "Timisoara, Romania"</li>
-                <li><a href="https://cv-weather-app.netlify.app">Go to page</a></li>
-                <li><a href="https://github.com/stefan-nicolae/CV-weather-app">Go to repository</a></li>
-            </ul>
-        </section>
-        <iframe 
-            id="weather"
-            allow="geolocation"
-            src="https://cv-weather-app.netlify.app"
-            width = "100%"
-            height= "100%"
-        ></iframe>
-
-        
+        <div class="projects">
+            <div class="project">
+                <img src="chatdemo.png">
+                <h1>Chat App - ReactJS</h1>
+                <ul>
+                    <li><a href="chatdemo.html">Go to Demo</a></li>
+                    <li><a href="https://cv-chat-app.netlify.app/">Go to App</a></li>
+                    <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-client">Go to client repository</a></li>
+                    <li><a href="https://github.com/stefan-nicolae/CV-chat-app-new-server">Go to server repository</a></li>
+                    <li>ReactJS, WebSocket, NodeJS</li>
+                    <li>Drag and drop file transfer max 8MB per file</li>
+                    <li>Click on image to zoom</li>
+                </ul>
+            </div>
+            <div class="project">
+                <img src="olxdemo.png">
+                <h1>OLX Clone - ReactJS</h1>
+                <ul>
+                    <li><a href="https://cv-olx-clone.netlify.app/">Go to App</a></li>
+                    <li><a href="https://github.com/stefan-nicolae/cv-olx-clone">Go to repository</a></li>
+                    <li>ReactJS, dummyjson.com for data, Google Maps API</li>
+                    <li>Contains home page, search page (click on "Cauta acum") and offer page (click on a product)</li>
+                </ul>
+            </div>
+            <div class="project">
+                <img src="weatherdemo.png">
+                <h1>Weather App - ReactJS</h1>
+                <ul>
+                    <li><a href="https://cv-weather-app.netlify.app/">Go to App</a></li>
+                    <li><a href="https://github.com/stefan-nicolae/CV-weather-app">Go to repository</a></li>
+                    <li>ReactJS, weatherapi.com (free version offers just 3 days), Google Maps API</li>
+                    <li>Needs access to your location to work</li>
+                    <li>Try typing something like "Timisoara, Romania"</li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <script>
-        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        
-        function generateString(length) {
-            let result = ' ';
-            const charactersLength = characters.length;
-            for ( let i = 0; i < length; i++ ) {
-                result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            }
-
-            return result;
-        }
-
-        const CHATID = generateString(15)
-        const PRODUCTION = true
-        const CHATDOMAIN = PRODUCTION ? "https://cv-chat-app.netlify.app" : "http://localhost:3000/"
-        function prepareChatFrame(id, CHATID) {
-            const ifrm = document.createElement("iframe")
-            
-            ifrm.setAttribute("height", "100%")
-            ifrm.setAttribute("width", "100%")
-            ifrm.setAttribute("src",
-                `${CHATDOMAIN}/nologin+chatID=[${CHATID.replaceAll(" ", "")}]`
-            )
-            ifrm.setAttribute("id", id)
-            return ifrm
-        }
-
-        const chats = document.querySelector(".chats")
-        chats.appendChild(prepareChatFrame("chat-1", CHATID))
-        chats.appendChild(prepareChatFrame("chat-2", CHATID))
-
-        document.querySelector("#chat-reload").onclick = () => {
-            console.log("Reloading")
-            const CHATID = generateString(15)
-            while (chats.lastChild) chats.removeChild(chats.lastChild);
-            chats.appendChild(prepareChatFrame("chat-1", CHATID))
-            chats.appendChild(prepareChatFrame("chat-2", CHATID))
-        }
-    </script>
-
-
-    <script>
-            const toDataURL = url => fetch(url)
-                .then(response => response.blob())
-                .then(blob => new Promise((resolve, reject) => {
-                const reader = new FileReader()
-                reader.onloadend = () => resolve(reader.result)
-                reader.onerror = reject
-                reader.readAsDataURL(blob)
-            }))
-
-            document.querySelectorAll(".draggable-files > *").forEach(fileElement => {
-                let counter = 0
-                let source = fileElement.src
-                if(fileElement.className.includes("media")) source = fileElement.children[0].children[0].src
-
-                toDataURL(source).then(dataURI => {
-                    fileElement.ondragstart = e => {
-                        e.dataTransfer.setData("text/plain", dataURI)
-                        e.dataTransfer.setData("title", decodeURIComponent(source))
-                    }
-                })
-            })
-
-            const isFirefox = typeof InstallTrigger !== 'undefined';
-            if(!isFirefox) {
-                document.querySelector(".draggable-files").style.display = "none"
-                document.querySelector("ul.firefox-transfer").style.display = "none"
-            }
-            else {
-                document.querySelector("ul.chrome-transfer").style.display = "none"
-            }
-    </script>
 </body>
 </html>
